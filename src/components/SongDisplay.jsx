@@ -4,6 +4,31 @@ import { connect } from 'react-redux';
 import { nextLyric, restartSong } from './../actions';
 
 const SongDisplay = ({ dispatch, song }) => {
+
+  const mapStateToProps = state => {
+  let info;
+  const song = state.songsById[state.currentSongId];
+  if (!state.songsById[state.currentSongId].isFetching) {
+    info = {
+      id: state.currentSongId,
+      artist: song.artist,
+      title: song.title,
+      songArray: song.songArray,
+      arrayPosition: song.arrayPosition
+    };
+  } else {
+    info = {
+      artist:'',
+      title: '',
+      songArray: '',
+      arrayPosition: ''
+    };
+  }
+    return {
+      song: info
+    };
+  };
+
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
   let action;
