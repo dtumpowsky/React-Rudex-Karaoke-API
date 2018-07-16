@@ -15,7 +15,7 @@ const SongDisplay = ({ dispatch, song }) => {
       <div onClick={e => {
         e.preventDefault();
         if(!(arrayPosition === songArray.length - 1)) {
-           dispatch(nextLyric(id));
+          dispatch(nextLyric(id));
         } else {
           dispatch(restartSong(id));
         }
